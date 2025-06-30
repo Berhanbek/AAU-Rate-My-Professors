@@ -54,7 +54,7 @@ export default function ProfessorPage() {
     async function fetchProfessor() {
       setLoading(true)
       try {
-        const res = await fetch(`http://localhost:5000/api/professor/${id}/long`, { cache: "no-store" })
+        const res = await fetch(`process.env.NEXT_PUBLIC_API_URL/api/professor/${id}/long`, { cache: "no-store" })
         const data = await res.json()
         setProfessor(data)
       } catch (err) {
@@ -69,7 +69,7 @@ export default function ProfessorPage() {
   const reloadProfessor = async () => {
     setLoading(true)
     try {
-      const res = await fetch(`http://localhost:5000/api/professor/${id}/long`, { cache: "no-store" })
+      const res = await fetch(`process.env.NEXT_PUBLIC_API_URL/api/professor/${id}/long`, { cache: "no-store" })
       const data = await res.json()
       setProfessor(data)
     } catch (err) {
@@ -86,7 +86,7 @@ export default function ProfessorPage() {
       const avgRating = (
         (reviewWorkload + reviewFairness + reviewDifficulty + reviewAttendance + reviewEngagement) / 5
       ).toFixed(2)
-      const res = await fetch(`http://localhost:5000/api/professor/${id}/review`, {
+      const res = await fetch(`process.env.NEXT_PUBLIC_API_URL/api/professor/${id}/review`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
