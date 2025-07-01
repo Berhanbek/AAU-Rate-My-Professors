@@ -86,7 +86,7 @@ export default function ProfessorPage() {
       const avgRating = (
         (reviewWorkload + reviewFairness + reviewDifficulty + reviewAttendance + reviewEngagement) / 5
       ).toFixed(2)
-      const res = await fetch(`process.env.NEXT_PUBLIC_API_URL/api/professor/${id}/review`, {
+      const res: Response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/professor/${id}/review`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
