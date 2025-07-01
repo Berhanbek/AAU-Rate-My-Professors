@@ -180,12 +180,12 @@ export default function ProfessorPage() {
 
   // Prepare reviews and courses
   const reviews = Array.isArray(professor.reviews) ? professor.reviews : []
-  const courses = [...new Set(reviews.map((review) => review.course_taken).filter((c) => c && c.trim() !== ""))]
+  const courses = [...new Set(reviews.map((review: any) => review.course_taken).filter((c: string) => c && c.trim() !== ""))]
 
   // Filter and sort reviews
   const filteredReviews = reviews
-    .filter((review) => selectedCourse === "all" || review.course_taken === selectedCourse)
-    .sort((a, b) => {
+    .filter((review: any) => selectedCourse === "all" || review.course_taken === selectedCourse)
+    .sort((a: any, b: any) => {
       switch (sortBy) {
         case "newest":
           return new Date(b.date || b.created_at || 0).getTime() - new Date(a.date || a.created_at || 0).getTime()
@@ -202,7 +202,7 @@ export default function ProfessorPage() {
 
   // Rating breakdown
   const ratingBreakdown: Record<number, number> = { 5: 0, 4: 0, 3: 0, 2: 0, 1: 0 }
-  reviews.forEach((r) => {
+  reviews.forEach((r: any) => {
     if (r.rating && ratingBreakdown[r.rating]) ratingBreakdown[r.rating] += 1
     else if (r.rating) ratingBreakdown[r.rating] = 1
   })

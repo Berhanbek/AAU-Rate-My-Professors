@@ -33,7 +33,7 @@ export default function SearchResultsPage() {
             setLoading(true)
             try {
                 const res = await fetch(
-                    `process.env.NEXT_PUBLIC_API_URL/api/search?q=${encodeURIComponent(query)}`,
+                    `${process.env.NEXT_PUBLIC_API_URL}/api/search?q=${encodeURIComponent(query)}`,
                     { cache: "no-store" },
                 )
                 const data = await res.json()
