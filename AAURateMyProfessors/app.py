@@ -5,7 +5,7 @@ from flask_cors import CORS
 import os
 
 app = Flask(__name__)
-CORS(app)
+CORS(app, origins=["https://aau-rate-my-professors.onrender.com"])
 
 @app.route('/api/search', methods=['GET'])
 def api_search_professor():
